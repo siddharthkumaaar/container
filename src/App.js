@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from 'react';
+const RemoteApp1 = React.lazy(() => import("microFrontEnd1/MicroFrontEnd1Index"));
+const RemoteApp2 = React.lazy(() => import("microFrontEnd2/MicroFrontEnd2Index"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Container</h1>
+      <Suspense fallback={"loading..."}>
+        <RemoteApp1/>
+      </Suspense>
+      <Suspense fallback={"loading..."}>
+        <RemoteApp2/>
+      </Suspense>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
